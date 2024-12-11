@@ -205,18 +205,31 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 				<h3>Особлива інформація: Відомості про зміну складу посадових осіб емітента</h3>
 				<p>Дата розміщення: 11.12.2024</p>
 				<div class="document-files">
-					<button onclick="tryOpenFile('person_o_10_12_2024.docx')" class="btn">
+					<a href="person_o_10_12_2024.docx" target="_blank" class="btn">
 						<i class="fa fa-file-word-o"></i> DOCX
-					</button>
-					<button onclick="tryOpenFile('person_o_10_12_2024.docx.p7s')" class="btn">
+					</a>
+					<a href="person_o_10_12_2024.docx.p7s" target="_blank" class="btn">
 						<i class="fa fa-file-text-o"></i> P7S
-					</button>
-					<button onclick="tryOpenFile('report.xml')" class="btn">
+					</a>
+					<a href="report.xml" target="_blank" class="btn">
 						<i class="fa fa-file-code-o"></i> XML
-					</button>
-					<button onclick="tryOpenFile('report.xml.p7s')" class="btn">
+					</a>
+					<a href="report.xml.p7s" target="_blank" class="btn">
 						<i class="fa fa-file-text-o"></i> XML.P7S
-					</button>
+					</a>
+				</div>
+			</div>
+			
+			<div class="document-info">
+				<h3>Протокол річних загальних зборів акціонерів від 10.12.2024</h3>
+				<p>Дата розміщення: 11.12.2024</p>
+				<div class="document-files">
+					<a href="ПротоколЗЗА2024.pdf" target="_blank" class="btn">
+						<i class="fa fa-file-pdf-o"></i> PDF
+					</a>
+					<a href="ПротоколЗЗА2024.pdf.p7s" target="_blank" class="btn">
+						<i class="fa fa-file-text-o"></i> P7S
+					</a>
 				</div>
 			</div>
 		</section>
@@ -248,7 +261,7 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 						</span>
 					</p>
 					<p class="adress_footer">
-						Україна, 02000, м. Київ, вул. Садова, буд. 25, оф. 78
+						Україна, 12276, м. Київ вул. Садова 78, буд. 25.
 					</p>
 				</div>
 			</div>
@@ -466,13 +479,14 @@ s0.parentNode.insertBefore(s1,s0);
 
 <script>
 function tryOpenFile(filename) {
-    // Проверяем существование файла перед открытием
-    fetch(filename)
+    const fullPath = 'https://bzpto.com.ua' + filename;
+    
+    fetch(fullPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Файл не найден');
             }
-            window.open(filename, '_blank');
+            window.open(fullPath, '_blank');
         })
         .catch(error => {
             console.error('Ошибка:', error);
