@@ -205,18 +205,18 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 				<h3>Особлива інформація: Відомості про зміну складу посадових осіб емітента</h3>
 				<p>Дата розміщення: 11.12.2024</p>
 				<div class="document-files">
-					<a href="/files/documents/2024/person_o_10_12_2024.docx" class="btn btn-lg btn-outline-primary">
-						<i class="fas fa-file-word"></i> DOC
-					</a>
-					<a href="/files/documents/2024/person_o_10_12_2024.pdf" class="btn btn-lg btn-outline-primary">
-						<i class="fas fa-file-pdf"></i> PDF
-					</a>
-					<a href="/files/documents/2024/report.xml" class="btn btn-lg btn-outline-primary">
-						<i class="fas fa-file-code"></i> XML
-					</a>
-					<a href="/files/documents/2024/report.xml.p7s" class="btn btn-lg btn-outline-primary">
-						<i class="fas fa-file-signature"></i> P7S
-					</a>
+					<button onclick="downloadFile('docx')" class="btn">
+						<i class="fa fa-file-word-o"></i> DOCX
+					</button>
+					<button onclick="downloadFile('docx_p7s')" class="btn">
+						<i class="fa fa-file-text-o"></i> DOCX.P7S
+					</button>
+					<button onclick="downloadFile('xml')" class="btn">
+						<i class="fa fa-file-code-o"></i> XML
+					</button>
+					<button onclick="downloadFile('xml_p7s')" class="btn">
+						<i class="fa fa-file-text-o"></i> XML.P7S
+					</button>
 				</div>
 			</div>
 		</section>
@@ -463,6 +463,34 @@ s0.parentNode.insertBefore(s1,s0);
 		color: white;
 	}
 </style>
+
+<script>
+function downloadFile(fileType) {
+    let filePath;
+    
+    switch(fileType) {
+        case 'docx':
+            filePath = '/Pdf_files/person_o_10_12_2024.docx';
+            break;
+        case 'docx_p7s':
+            filePath = '/Pdf_files/person_o_10_12_2024.docx.p7s';
+            break;
+        case 'xml':
+            filePath = '/Pdf_files/report.xml';
+            break;
+        case 'xml_p7s':
+            filePath = '/Pdf_files/report.xml.p7s';
+            break;
+    }
+    
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = filePath.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
 </body>
 </html><!--
      FILE ARCHIVED ON 11:04:15 Aug 24, 2019 AND RETRIEVED FROM THE
