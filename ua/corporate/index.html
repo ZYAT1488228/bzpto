@@ -205,16 +205,16 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 				<h3>Особлива інформація: Відомості про зміну складу посадових осіб емітента</h3>
 				<p>Дата розміщення: 11.12.2024</p>
 				<div class="document-files">
-					<button onclick="window.open('person_o_10_12_2024.docx')" class="btn">
+					<button onclick="tryOpenFile('person_o_10_12_2024.docx')" class="btn">
 						<i class="fa fa-file-word-o"></i> DOCX
 					</button>
-					<button onclick="window.open('person_o_10_12_2024.docx.p7s')" class="btn">
+					<button onclick="tryOpenFile('person_o_10_12_2024.docx.p7s')" class="btn">
 						<i class="fa fa-file-text-o"></i> P7S
 					</button>
-					<button onclick="window.open('report.xml')" class="btn">
+					<button onclick="tryOpenFile('report.xml')" class="btn">
 						<i class="fa fa-file-code-o"></i> XML
 					</button>
-					<button onclick="window.open('report.xml.p7s')" class="btn">
+					<button onclick="tryOpenFile('report.xml.p7s')" class="btn">
 						<i class="fa fa-file-text-o"></i> XML.P7S
 					</button>
 				</div>
@@ -465,54 +465,18 @@ s0.parentNode.insertBefore(s1,s0);
 </style>
 
 <script>
-function downloadFile(fileType) {
-    let filePath;
-    // Используем HTTPS и правильный путь
-    const baseUrl = 'https://bzpto.com.ua/ua/corporate/';
-    
-    switch(fileType) {
-        case 'docx':
-            filePath = baseUrl + + 'Pdf_files/person_o_10_12_2024.docx';
-            break;
-        case 'docx_p7s':
-            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx.p7s';
-            break;
-        case 'xml':
-            filePath = baseUrl + 'Pdf_files/report.xml';
-            break;
-        case 'xml_p7s':
-            filePath = baseUrl + 'Pdf_files/report.xml.p7s';
-            break;
-    }
-    
-    console.log('Попытка загрузки файла:', filePath);
-    
-    fetch(filePath, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/octet-stream'
-        }
-    })
+function tryOpenFile(filename) {
+    // Проверяем существование файла перед открытием
+    fetch(filename)
         .then(response => {
             if (!response.ok) {
-                console.log('Ответ сервера:', response.status);
-                throw new Error(`Файл не найден (статус: ${response.status})`);
+                throw new Error('Файл не найден');
             }
-            return response.blob();
-        })
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filePath.split('/').pop();
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
+            window.open(filename, '_blank');
         })
         .catch(error => {
             console.error('Ошибка:', error);
-            alert('Ошибка при скачивании файла: ' + error.message);
+            alert('Файл не найден или недоступен. Проверьте наличие файла: ' + filename);
         });
 }
 </script>
