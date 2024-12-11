@@ -467,28 +467,44 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
 function downloadFile(fileType) {
     let filePath;
+    const baseUrl = window.location.origin + '/ua/corporate/'; // Базовый URL
     
     switch(fileType) {
         case 'docx':
-            filePath = '/Pdf_files/person_o_10_12_2024.docx';
+            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx';
             break;
         case 'docx_p7s':
-            filePath = '/Pdf_files/person_o_10_12_2024.docx.p7s';
+            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx.p7s';
             break;
         case 'xml':
-            filePath = '/Pdf_files/report.xml';
+            filePath = baseUrl + 'Pdf_files/report.xml';
             break;
         case 'xml_p7s':
-            filePath = '/Pdf_files/report.xml.p7s';
+            filePath = baseUrl + 'Pdf_files/report.xml.p7s';
             break;
     }
     
-    const link = document.createElement('a');
-    link.href = filePath;
-    link.download = filePath.split('/').pop();
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Проверяем существование файла перед скачиванием
+    fetch(filePath)
+        .then(response => {
+            if (response.ok) {
+                return response.blob();
+            }
+            throw new Error('Файл не найден');
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filePath.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            alert('Ошибка при скачивании файла: ' + error.message);
+        });
 }
 </script>
 </body>
