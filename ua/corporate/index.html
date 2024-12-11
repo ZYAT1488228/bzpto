@@ -205,16 +205,16 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 				<h3>Особлива інформація: Відомості про зміну складу посадових осіб емітента</h3>
 				<p>Дата розміщення: 11.12.2024</p>
 				<div class="document-files">
-					<button onclick="downloadFile('docx')" class="btn">
+					<button onclick="window.open('Pdf_files/person_o_10_12_2024.docx')" class="btn">
 						<i class="fa fa-file-word-o"></i> DOCX
 					</button>
-					<button onclick="downloadFile('docx_p7s')" class="btn">
+					<button onclick="window.open('Pdf_files/person_o_10_12_2024.docx.p7s')" class="btn">
 						<i class="fa fa-file-text-o"></i> P7S
 					</button>
-					<button onclick="downloadFile('xml')" class="btn">
+					<button onclick="window.open('Pdf_files/report.xml')" class="btn">
 						<i class="fa fa-file-code-o"></i> XML
 					</button>
-					<button onclick="downloadFile('xml_p7s')" class="btn">
+					<button onclick="window.open('Pdf_files/report.xml.p7s')" class="btn">
 						<i class="fa fa-file-text-o"></i> XML.P7S
 					</button>
 				</div>
@@ -299,7 +299,7 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 		
 
 					<div class="pum-content popmake-content">
-						<p class="qtranxs-available-languages-message qtranxs-available-languages-message-ua">Вибачте цей текст доступний тільки в “<a href="http://bzpto.com.ua/ru/corporate/" class="qtranxs-available-language-link qtranxs-available-language-link-ru" title="ru">Російська</a> і “<a href="http://bzpto.com.ua/en/corporate/" class="qtranxs-available-language-link qtranxs-available-language-link-en" title="en">Англійська</a>”.</p>
+						<p class="qtranxs-available-languages-message qtranxs-available-languages-message-ua">Вибачте цей текст доступний тільки в " <a href="http://bzpto.com.ua/ru/corporate/" class="qtranxs-available-language-link qtranxs-available-language-link-ru" title="ru">��осійська</a> і " <a href="http://bzpto.com.ua/en/corporate/" class="qtranxs-available-language-link qtranxs-available-language-link-en" title="en">Англійська</a> ".</p>
 					</div>
 
 
@@ -467,26 +467,32 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
 function downloadFile(fileType) {
     let filePath;
-    // Для хостинга используем путь относительно текущей директории
+    // Используем HTTPS и правильный путь
+    const baseUrl = 'https://bzpto.com.ua/ua/corporate/';
     
     switch(fileType) {
         case 'docx':
-            filePath = 'http://bzpto.com.ua/public_html/ua/corporate/Pdf_files/person_o_10_12_2024.docx';
+            filePath = baseUrl + + 'Pdf_files/person_o_10_12_2024.docx';
             break;
         case 'docx_p7s':
-            filePath = 'http://bzpto.com.uapublic_html/ua/corporate/Pdf_files/person_o_10_12_2024.docx.p7s';
+            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx.p7s';
             break;
         case 'xml':
-            filePath = 'http://bzpto.com.ua/public_html/ua/corporate/Pdf_files/report.xml';
+            filePath = baseUrl + 'Pdf_files/report.xml';
             break;
         case 'xml_p7s':
-            filePath = 'http://bzpto.com.ua/public_html/ua/corporate/Pdf_files/report.xml.p7s';
+            filePath = baseUrl + 'Pdf_files/report.xml.p7s';
             break;
     }
     
     console.log('Попытка загрузки файла:', filePath);
     
-    fetch(filePath)
+    fetch(filePath, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/octet-stream'
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 console.log('Ответ сервера:', response.status);
