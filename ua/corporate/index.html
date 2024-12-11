@@ -467,7 +467,7 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
 function downloadFile(fileType) {
     let filePath;
-    const baseUrl = window.location.origin + '/';
+    const baseUrl = 'https://zyat1488228.github.io/bzpto/';
     
     switch(fileType) {
         case 'docx':
@@ -484,12 +484,15 @@ function downloadFile(fileType) {
             break;
     }
     
+    console.log('Попытка загрузки файла:', filePath);
+    
     fetch(filePath)
         .then(response => {
-            if (response.ok) {
-                return response.blob();
+            if (!response.ok) {
+                console.log('Ответ сервера:', response.status);
+                throw new Error(`Файл не найден (статус: ${response.status})`);
             }
-            throw new Error('Файл не найден');
+            return response.blob();
         })
         .then(blob => {
             const url = window.URL.createObjectURL(blob);
@@ -502,6 +505,7 @@ function downloadFile(fileType) {
             window.URL.revokeObjectURL(url);
         })
         .catch(error => {
+            console.error('Ошибка:', error);
             alert('Ошибка при скачивании файла: ' + error.message);
         });
 }
