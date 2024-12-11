@@ -201,13 +201,23 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 
 		<section class="investor-info">
 			<h2>Інформація для акціонерів</h2>
-			<div class="pdf-links">
-				<ul>
-					<li><a href="Pdf_files/File1.pdf" target="_blank">Інформація для акціонерів 1</a></li>
-					<li><a href="Pdf_files/File2.pdf" target="_blank">Інформація для акціонерів 2</a></li>
-					<li><a href="Pdf_files/File3.pdf" target="_blank">Інформація для акціонерів 3</a></li>
-					<li><a href="Pdf_files/File4.pdf" target="_blank">Інформація для акціонерів 4</a></li>
-				</ul>
+			<div class="document-info">
+				<h3>Особлива інформація: Відомості про зміну складу посадових осіб емітента</h3>
+				<p>Дата розміщення: 11.12.2024</p>
+				<div class="document-files">
+					<a href="/files/documents/2024/person_o_10_12_2024.docx" class="btn btn-lg btn-outline-primary">
+						<i class="fas fa-file-word"></i> DOC
+					</a>
+					<a href="/files/documents/2024/person_o_10_12_2024.pdf" class="btn btn-lg btn-outline-primary">
+						<i class="fas fa-file-pdf"></i> PDF
+					</a>
+					<a href="/files/documents/2024/report.xml" class="btn btn-lg btn-outline-primary">
+						<i class="fas fa-file-code"></i> XML
+					</a>
+					<a href="/files/documents/2024/report.xml.p7s" class="btn btn-lg btn-outline-primary">
+						<i class="fas fa-file-signature"></i> P7S
+					</a>
+				</div>
 			</div>
 		</section>
 
@@ -357,35 +367,100 @@ s0.parentNode.insertBefore(s1,s0);
 
 <style>
 	.investor-info {
-		background-color: #f9f9f9; /* Светлый фон */
-		padding: 20px; /* Отступы */
-		border-radius: 8px; /* Закругленные углы */
-		margin-bottom: 20px; /* Отступ снизу */
+		background-color: #f9f9f9;
+		padding: 30px;
+		border-radius: 10px;
+		margin: 30px 0;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 	}
 
 	.investor-info h2 {
-		text-align: center; /* Центрирование заголовка */
-		color: #333; /* Цвет текста заголов��а */
+		color: #2c3e50;
+		font-size: 2rem;
+		margin-bottom: 25px;
+		text-align: center;
 	}
 
-	.pdf-links ul {
-		list-style-type: none; /* Убираем маркеры списка */
-		padding: 0; /* Убираем отступы */
+	.document-info {
+		background: white;
+		padding: 25px;
+		border-radius: 8px;
+		border: 1px solid #e9ecef;
 	}
 
-	.pdf-links li {
-		margin: 10px 0; /* Отступы между пунктами */
+	.document-info h3 {
+		color: #34495e;
+		font-size: 1.3rem;
+		margin-bottom: 10px;
+		font-weight: 600;
 	}
 
-	.pdf-links a {
-		text-decoration: none; /* Убираем подчеркивание */
-		color: #007bff; /* Цвет ссылок */
-		font-weight: bold; /* Жирный шрифт */
-		transition: color 0.3s; /* Плавный переход цвета */
+	.document-info p {
+		color: #6c757d;
+		font-size: 0.95rem;
+		margin-bottom: 20px;
 	}
 
-	.pdf-links a:hover {
-		color: #0056b3; /* Цвет при наведении */
+	.document-files {
+		display: flex;
+		gap: 15px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.document-files .btn {
+		min-width: 120px;
+		padding: 12px 25px;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		border-width: 2px;
+	}
+
+	.document-files .btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	}
+
+	.document-files .btn i {
+		margin-right: 8px;
+		font-size: 1.1em;
+	}
+
+	/* Специфичные цвета для разных типов файлов */
+	.document-files .btn:nth-child(1) { /* DOC */
+		color: #2b579a;
+		border-color: #2b579a;
+	}
+	.document-files .btn:nth-child(1):hover {
+		background-color: #2b579a;
+		color: white;
+	}
+
+	.document-files .btn:nth-child(2) { /* PDF */
+		color: #dc3545;
+		border-color: #dc3545;
+	}
+	.document-files .btn:nth-child(2):hover {
+		background-color: #dc3545;
+		color: white;
+	}
+
+	.document-files .btn:nth-child(3) { /* XML */
+		color: #28a745;
+		border-color: #28a745;
+	}
+	.document-files .btn:nth-child(3):hover {
+		background-color: #28a745;
+		color: white;
+	}
+
+	.document-files .btn:nth-child(4) { /* P7S */
+		color: #6f42c1;
+		border-color: #6f42c1;
+	}
+	.document-files .btn:nth-child(4):hover {
+		background-color: #6f42c1;
+		color: white;
 	}
 </style>
 </body>
