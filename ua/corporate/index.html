@@ -467,19 +467,20 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
 function downloadFile(fileType) {
     let filePath;
+    // Для хостинга используем путь относительно текущей директории
     
     switch(fileType) {
         case 'docx':
-            filePath = '../Pdf_files/person_o_10_12_2024.docx';
+            filePath = './Pdf_files/person_o_10_12_2024.docx';
             break;
         case 'docx_p7s':
-            filePath = '../Pdf_files/person_o_10_12_2024.docx.p7s';
+            filePath = './Pdf_files/person_o_10_12_2024.docx.p7s';
             break;
         case 'xml':
-            filePath = '../Pdf_files/report.xml';
+            filePath = './Pdf_files/report.xml';
             break;
         case 'xml_p7s':
-            filePath = '../Pdf_files/report.xml.p7s';
+            filePath = './Pdf_files/report.xml.p7s';
             break;
     }
     
