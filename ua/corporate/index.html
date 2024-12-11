@@ -209,7 +209,7 @@ var pp_plugin = {"blank_gif":"https:\/\/web.archive.org\/web\/20190824110415\/ht
 						<i class="fa fa-file-word-o"></i> DOCX
 					</button>
 					<button onclick="downloadFile('docx_p7s')" class="btn">
-						<i class="fa fa-file-text-o"></i> DOCX.P7S
+						<i class="fa fa-file-text-o"></i> P7S
 					</button>
 					<button onclick="downloadFile('xml')" class="btn">
 						<i class="fa fa-file-code-o"></i> XML
@@ -467,20 +467,19 @@ s0.parentNode.insertBefore(s1,s0);
 <script>
 function downloadFile(fileType) {
     let filePath;
-    const baseUrl = 'https://zyat1488228.github.io/bzpto/';
     
     switch(fileType) {
         case 'docx':
-            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx';
+            filePath = '../Pdf_files/person_o_10_12_2024.docx';
             break;
         case 'docx_p7s':
-            filePath = baseUrl + 'Pdf_files/person_o_10_12_2024.docx.p7s';
+            filePath = '../Pdf_files/person_o_10_12_2024.docx.p7s';
             break;
         case 'xml':
-            filePath = baseUrl + 'Pdf_files/report.xml';
+            filePath = '../Pdf_files/report.xml';
             break;
         case 'xml_p7s':
-            filePath = baseUrl + 'Pdf_files/report.xml.p7s';
+            filePath = '../Pdf_files/report.xml.p7s';
             break;
     }
     
